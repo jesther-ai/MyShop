@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Badge extends StatelessWidget {
-  Badge(this.child, this.color, this.value);
+  Badge({required this.child, this.color, required this.value});
 
   final Widget child;
   final String value;
-  final Color color;
+  Color? color;
 
   @override
   Widget build(BuildContext context) {
