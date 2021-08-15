@@ -41,28 +41,13 @@ class Products with ChangeNotifier {
     return _items.firstWhere((element) => element.id == id);
   }
 
-  // var _showFavoriteOnly = false;
-
   List<Product> get items {
-    // if (_showFavoriteOnly) {
-    //   return _items.where((element) => element.isFavorite).toList();
-    // }
     return [..._items];
   }
 
   void addProduct() {
     notifyListeners();
   }
-
-  // void showFavoritesOnly() {
-  //   _showFavoriteOnly = true;
-  //   notifyListeners();
-  // }
-
-  // void showAll() {
-  //   _showFavoriteOnly = false;
-  //   notifyListeners();
-  // }
 
   List<Product> get favoriteItems {
     return _items.where((element) => element.isFavorite).toList();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myshop/providers/cart.dart';
+import 'package:myshop/providers/orders.dart';
 import 'package:provider/provider.dart';
 import 'package:myshop/widgets/cart_item.dart' as ci;
 
@@ -45,7 +46,13 @@ class CartScreen extends StatelessWidget {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Provider.of<Orders>(context, listen: false).addOrder(
+                        cart.items.values.toList(),
+                        cart.totalAmount,
+                      );
+                      cart.clear();
+                    },
                     child: Text('ORDER NOW'),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(
@@ -56,9 +63,7 @@ class CartScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
+          SizedBox(height: 10),
           Expanded(
             child: ListView.builder(
               itemCount: cart.items.length,
