@@ -26,23 +26,16 @@ class _OrderItemState extends State<OrderItem> {
               DateFormat('dd/MM/yyyy hh:mm').format(widget.order.dateTime),
             ),
             trailing: IconButton(
-              onPressed: () {
-                setState(
-                  () {
-                    _expanded = !_expanded;
-                  },
-                );
-              },
+              onPressed: () => setState(
+                () => _expanded = !_expanded,
+              ),
               icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),
             ),
           ),
           if (_expanded)
             Container(
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
-              height: min(
-                widget.order.products.length * 20 + 10,
-                100,
-              ),
+              height: min(widget.order.products.length * 20 + 10, 100),
               child: ListView(
                 children: widget.order.products.map(
                   (e) {
